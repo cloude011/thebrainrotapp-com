@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Waitlist - Brainrot</title>
+    <meta name="description" content="Join the waitlist for Brainrot on Android. Be the first to know when our Android app launches.">
+    
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- open graph / facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thebrainrotapp.com/android-waitlist.html">
+    <meta property="og:title" content="Android Waitlist - Brainrot">
+    <meta property="og:description" content="Join the waitlist for Brainrot on Android. Be the first to know when our Android app launches.">
+    <meta property="og:image" content="https://thebrainrotapp.com/images/og-image.png">
+    
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .waitlist-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .waitlist-container h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .waitlist-container .subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .waitlist-form {
+            margin: 3rem 0;
+        }
+        
+        .google-form-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            min-height: 550px;
+        }
+        
+        .google-form-container iframe {
+            width: 100%;
+            border: none;
+            display: block;
+            min-height: 550px;
+        }
+        
+        .loading-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            z-index: 10;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #222;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        .loading-text {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .form-loaded .loading-indicator {
+            display: none;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            color: #555;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #222;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .waitlist-container {
+                padding: 2rem 1rem;
+            }
+            
+            .waitlist-container h1 {
+                font-size: 2rem;
+            }
+            
+            .google-form-container iframe {
+                min-height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="waitlist-container">
+            <h1>Android Coming Soon!</h1>
+            <p class="subtitle">Brainrot is currently available on iOS. Join our waitlist to be the first to know when we launch on Android.</p>
+            
+            <div class="waitlist-form">
+                <div class="google-form-container">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        <span class="loading-text">Loading...</span>
+                    </div>
+                    <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSfD2lhavvvheeOtK44iGdl7-CAxYFJZ_YVo0do2jHRo8Oqq7g/viewform?embedded=true" width="100%" height="554" frameborder="0" marginheight="0" marginwidth="0">
+                        Loading…
+                    </iframe>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+    
+    <script>
+        // Hide loading indicator when iframe loads
+        document.getElementById('google-form').addEventListener('load', function() {
+            document.querySelector('.google-form-container').classList.add('form-loaded');
+        });
+        
+        // Also hide after a timeout as backup (in case load event doesn't fire)
+        setTimeout(function() {
+            document.querySelector('.google-form-container').classList.add('form-loaded');
+        }, 5000);
+    </script>
+    
+    <script async="" src="latest.js"></script>
+</body>
+</html> 

@@ -1,0 +1,212 @@
+Uri: https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\css2
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/rubik/v31/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-1UA.ttf
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\s\rubik\v31\iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-1UA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/rubik/v31/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\s\rubik\v31\iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/rubik/v31/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\s\rubik\v31\iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/rubik/v31/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-h4-1UA.ttf
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\s\rubik\v31\iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-h4-1UA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/rubik/v31/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-NYi1UA.ttf
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\s\rubik\v31\iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-NYi1UA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/rubik/v31/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\s\rubik\v31\iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf
+Content Type: font/ttf
+
+Uri: https://scripts.simpleanalyticscdn.com/auto-events.js
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\auto-events.js
+Content Type: application/javascript
+
+Uri: https://scripts.simpleanalyticscdn.com/latest.js
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\latest.js
+Content Type: application/javascript
+
+Uri: https://thebrainrotapp.com/
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\index-1.htm
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/?ref=producthunt
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\index.htm
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/android-waitlist.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\android-waitlist.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/author/yoni-smolyar.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\author\yoni-smolyar.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/block-instagram-on-iphone.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\block-instagram-on-iphone.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/blog.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\blog.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/blog.js
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\blog.js
+Content Type: application/javascript
+
+Uri: https://thebrainrotapp.com/cancel.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\cancel.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/contact.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\contact.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/faq.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\faq.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/guide.css
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\guide.css
+Content Type: text/css
+
+Uri: https://thebrainrotapp.com/help.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\help.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/help.js
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\help.js
+Content Type: application/javascript
+
+Uri: https://thebrainrotapp.com/help/app-blocking-not-working.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\help\app-blocking-not-working.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/help/app-blocking.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\help\app-blocking.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/home.css
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\home.css
+Content Type: text/css
+
+Uri: https://thebrainrotapp.com/images/app-store-badge.webp
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\app-store-badge.webp
+Content Type: image/webp
+
+Uri: https://thebrainrotapp.com/images/apple-touch-icon.png
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\apple-touch-icon.png
+Content Type: image/png
+
+Uri: https://thebrainrotapp.com/images/beach-scene-mobile.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\beach-scene-mobile.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/beach-scene.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\beach-scene.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/block-instagram-all-day.png
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\block-instagram-all-day.png
+Content Type: image/png
+
+Uri: https://thebrainrotapp.com/images/block-instagram-daily-limit.png
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\block-instagram-daily-limit.png
+Content Type: image/png
+
+Uri: https://thebrainrotapp.com/images/block-instagram-schedule.png
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\block-instagram-schedule.png
+Content Type: image/png
+
+Uri: https://thebrainrotapp.com/images/brainrot-icon.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\brainrot-icon.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/brainrot-logo.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\brainrot-logo.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/brainrot-wordmark.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\brainrot-wordmark.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/favicon-96x96.png
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\favicon-96x96.png
+Content Type: image/png
+
+Uri: https://thebrainrotapp.com/images/favicon.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\favicon.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/google-play-badge.png
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\google-play-badge.png
+Content Type: image/png
+
+Uri: https://thebrainrotapp.com/images/hero-scene-mobile.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\hero-scene-mobile.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/hero-scene.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\hero-scene.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/laurel.svg
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\laurel.svg
+Content Type: image/svg+xml
+
+Uri: https://thebrainrotapp.com/images/phone-feature-1.webp
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\phone-feature-1.webp
+Content Type: image/webp
+
+Uri: https://thebrainrotapp.com/images/phone-feature-2.webp
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\phone-feature-2.webp
+Content Type: image/webp
+
+Uri: https://thebrainrotapp.com/images/phone-feature-3.webp
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\phone-feature-3.webp
+Content Type: image/webp
+
+Uri: https://thebrainrotapp.com/images/phone-hero.webp
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\phone-hero.webp
+Content Type: image/webp
+
+Uri: https://thebrainrotapp.com/images/yoni-smolyar.webp
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\images\yoni-smolyar.webp
+Content Type: image/webp
+
+Uri: https://thebrainrotapp.com/index.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\index.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/manage.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\manage.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/privacy.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\privacy.html
+Content Type: text/html
+
+Uri: https://thebrainrotapp.com/script.js
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\script.js
+Content Type: application/javascript
+
+Uri: https://thebrainrotapp.com/styles.css
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\styles.css
+Content Type: text/css
+
+Uri: https://thebrainrotapp.com/terms.html
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\terms.html
+Content Type: text/html
+
+Uri: https://www.facebook.com/tr?id=908641598390558&ev=PageView&noscript=1
+File Name: C:\Downloaded Web Sites\thebrainrotapp.com\tr
+Content Type: text/plain
+

@@ -1,0 +1,766 @@
+/* ---------- tokens ---------- */
+:root {
+    --brand-blue: #2486FF;
+    --dark: #211C28;
+    --gray-1: #EEEDF0;
+    --gray-7: #8F859C;
+    --gray-8: #736783;
+    --gray-9: #433C4E;
+    --gray-0: #FAF9FA;
+    --white: #FFFFFF;
+    --grass: #7BC85B;
+    --cream: #FFF6E5;
+    --sky: #90DFFF;
+
+    --max: 1440px;
+    --pad: clamp(20px, 4vw, 60px);
+}
+
+/* ---------- reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+html, body {
+    width: 100%;
+    overflow-x: clip;
+    /* stop the rubber-band overscroll that exposes white/background above and below */
+    overscroll-behavior: none;
+}
+
+
+/* solid sky-blue background — shows in both top and bottom overscroll */
+html { background: #90DFFF; }
+
+body {
+    font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--dark);
+    /* matches .about so the area showing through hero's rounded corners blends */
+    background: var(--gray-0);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+picture { display: block; }
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* ---------- HERO ----------
+   Desktop: aspect-ratio matches the scene SVG so the whole illustration
+   is visible naturally. Content + phone sit in absolute layers on top.
+   Mobile: media query below switches to flow stacking.
+   The SVG has its own rounded bottom corners baked in (radius ~30/38px
+   on the 1440x1556 source), so the .hero border-radius is matched in % so
+   it scales with the viewport and aligns with the SVG curve — no blue ring. */
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 1400;
+    background: var(--sky);
+    overflow: hidden;
+    border-radius: 0 0 2.08% 2.08% / 0 0 2.71% 2.71%;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+}
+.hero-bg img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.site-nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 5;
+    padding: clamp(1rem, 2.2vw, 2rem) var(--pad);
+    display: flex;
+    justify-content: center;
+}
+
+.brand { transition: opacity .2s; }
+.brand:hover { opacity: .8; }
+.brand img { height: clamp(18px, 2vw, 28px); width: auto; display: block; }
+
+.hero-inner {
+    position: absolute;
+    top: 7%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.hero-title {
+    font-weight: 800;
+    font-size: clamp(1.75rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--dark);
+}
+.hero-title span { display: block; }
+
+.hero-sub {
+    margin-top: clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(0.95rem, 1.5vw, 1.35rem);
+    font-weight: 400;
+    color: var(--gray-8);
+    /* narrow enough that "...by fighting back" wraps before "doomscrolling" */
+    max-width: min(32rem, calc(100vw - 2.5rem));
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.hero-cta {
+    margin-top: clamp(0.75rem, 1.5vw, 1.5rem);
+    display: inline-block;
+    transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+}
+.hero-cta:hover { transform: translateY(-3px) scale(1.04); }
+.hero-cta:active { transform: translateY(-1px) scale(0.97); }
+.hero-cta img { height: clamp(36px, 4vw, 56px); width: auto; display: block; }
+
+/* Phone centered horizontally; bottom-anchored so its base sits on the
+   shadow regardless of phone size. Shadow is 229px from the SVG bottom
+   (out of 1556) → bottom: 229/1400 ≈ 16.4% of the cropped hero. */
+.hero-phone {
+    position: absolute;
+    left: 50%;
+    bottom: 16.4%;
+    /* translateZ(0) + backface-visibility promote this to its own GPU layer so
+       the drop-shadow is transformed (not re-rasterized) during pinch-zoom —
+       without it mobile browsers flash/tear the SVG filter region as a hard box */
+    transform: translateX(-50%) translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    width: 22%;
+    max-width: 380px;
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0 24px 36px rgba(0,0,0,0.22));
+}
+
+/* wordmark overlaid on beach scene (faded watermark behind footer links) */
+.cta-wordmark {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    width: 88%;
+    max-width: 1200px;
+    transform: translateX(-50%);
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ---------- ABOUT + STATS ---------- */
+.about {
+    background: var(--gray-0);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--pad);
+    text-align: center;
+    color: var(--dark);
+    position: relative;
+}
+
+.about-copy {
+    max-width: 30rem;
+    margin: 0 auto;
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--gray-9);
+}
+
+.about-copy p + p {
+    margin-top: 1rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: clamp(2.5rem, 6vw, 4.5rem);
+    margin-top: 2.5rem;
+}
+
+.stat {
+    position: relative;
+    padding: 0 2.25rem;
+}
+
+/* laurel-wreath ornaments around each stat */
+.stat::before,
+.stat::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 1.6rem;
+    height: 2.75rem;
+    background-image: url("images/laurel.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.stat::before {
+    left: 0;
+    transform: translateY(-50%);
+}
+.stat::after {
+    right: 0;
+    transform: translateY(-50%) scaleX(-1);
+}
+
+.stat-num {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    /* keep digit widths constant so the JS count-up doesn't jitter */
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gray-8);
+    margin-top: 0.1rem;
+}
+
+/* ---------- FEATURES ---------- */
+.features {
+    background: var(--gray-0);
+    padding: clamp(4rem, 8vw, 7rem) var(--pad);
+}
+
+.features-head {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 3.5rem;
+}
+
+.features-head h2 {
+    font-size: clamp(2rem, 4.5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.features-head p {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: var(--gray-9);
+}
+
+.features-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-item {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.06);
+    transition: transform .2s, box-shadow .2s;
+}
+.feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 0 rgba(0,0,0,0.08);
+}
+
+.feature-item h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.feature-item p {
+    margin-top: 0.25rem;
+    color: var(--gray-8);
+    font-size: 0.95rem;
+}
+
+.feature-phones {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.feature-phones .phone {
+    width: clamp(110px, 18vw, 220px);
+    height: auto;
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,0.15));
+}
+
+.feature-phones .phone-1 {
+    z-index: 2;
+    transform: translateY(20px) rotate(-3deg);
+}
+.feature-phones .phone-2 {
+    z-index: 3;
+    width: clamp(140px, 22vw, 260px);
+}
+.feature-phones .phone-3 {
+    z-index: 2;
+    transform: translateY(20px) rotate(3deg);
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials {
+    background: var(--gray-0);
+    padding: clamp(3rem, 6vw, 5rem) var(--pad) clamp(4rem, 8vw, 7rem);
+}
+
+.testimonials-head {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+}
+
+.testimonials-head h2 {
+    font-size: clamp(2rem, 4.5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.testimonials-head p {
+    margin-top: 1rem;
+    color: var(--gray-9);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+}
+
+/* Reviews scroll in an infinite marquee. The track holds two identical
+   groups (the second is cloned by script.js) and slides -50% per loop,
+   which equals exactly one group width — a seamless wrap. Without JS
+   there's no clone and no animation: a static row, edges faded. */
+.testimonials-row {
+    max-width: 1300px;
+    margin: 0 auto;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+}
+.js .marquee-track { animation: marquee 45s linear infinite; }
+.testimonials-row:hover .marquee-track { animation-play-state: paused; }
+
+.marquee-group {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem; /* keeps card spacing consistent across the loop seam */
+}
+
+@keyframes marquee {
+    to { transform: translateX(-50%); }
+}
+
+.review {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 1.25rem 1.25rem 1.1rem;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 0 0 clamp(240px, 24vw, 320px);
+    overflow-wrap: anywhere;
+    transition: transform .2s, box-shadow .2s;
+}
+.review:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 0 rgba(0,0,0,0.08);
+}
+
+.stars {
+    color: #FFC83D;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.review p {
+    color: var(--dark);
+    font-size: 0.92rem;
+    line-height: 1.45;
+    flex: 1;
+}
+
+.reviewer {
+    font-size: 0.85rem;
+    color: var(--gray-8);
+    font-weight: 500;
+}
+
+/* ---------- CTA + FOOTER (overlaid on beach) ----------
+   The beach-scene.svg is 1440x2458 — too tall. We crop only the BOTTOM
+   half by using a shorter aspect-ratio + object-position: top.
+   The SVG has rounded top corners baked in (radius ~64px on 1440 wide),
+   so the .cta border-radius matches in % to align cleanly with the SVG. */
+.cta {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 1480;
+    overflow: hidden;
+    background: var(--gray-0);
+    border-radius: 4.44% 4.44% 0 0 / 4.32% 4.32% 0 0;
+}
+
+.cta-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+}
+.cta-bg img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.cta-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: clamp(3rem, 7vw, 6rem);
+}
+
+.cta-inner h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+}
+.cta-inner h2 span { display: block; }
+.cta-inner h2 span + span { margin-top: 0.5em; }
+
+.cta-button {
+    margin-top: 2.5rem;
+    display: inline-block;
+    transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+}
+.cta-button:hover { transform: translateY(-3px) scale(1.04); }
+.cta-button:active { transform: translateY(-1px) scale(0.97); }
+.cta-button img { height: 60px; width: auto; }
+
+/* ---------- FOOTER LINKS OVERLAID ON BEACH ---------- */
+.footer-cols {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 22%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+    width: 92%;
+    max-width: 640px;
+    text-align: center;
+    justify-items: center;
+}
+
+.footer-col h4 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+    display: block;
+    color: var(--gray-9);
+    font-size: 1rem;
+    padding: 0.2rem 0;
+    transition: color .15s;
+}
+.footer-col a:hover { color: var(--dark); }
+
+.copyright {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    bottom: 1.25rem;
+    text-align: center;
+    color: var(--gray-9);
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 700px) {
+    /* mobile uses hero-scene-mobile.svg (390x962). Match its aspect so the
+       scene shows fully without cropping. Phone is positioned absolutely
+       over the SVG's shadow at (195, 854) → left 50%, bottom 11.2%. */
+    .hero {
+        aspect-ratio: 390 / 962;
+        min-height: 0;
+        max-height: none;
+        padding: 0;
+        border-radius: 0 0 5% 5% / 0 0 2% 2%;
+    }
+
+    /* mobile-specific sizing: scale steeper with viewport for proper proportion */
+    .site-nav { padding: clamp(1.75rem, 8vw, 3rem) var(--pad) 0; }
+    .brand img { height: clamp(22px, 5.5vw, 32px); }
+
+    .hero-inner {
+        position: absolute;
+        top: clamp(5.75rem, 23vw, 8.5rem);
+        left: 0;
+        right: 0;
+        padding: 0 1.25rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.3rem, 6.8vw, 2.25rem);
+        line-height: 1.1;
+    }
+    .hero-title span + span { margin-top: 0.05em; }
+
+    .hero-sub {
+        font-size: clamp(0.9rem, 3.6vw, 1.2rem);
+        line-height: 1.4;
+        margin-top: clamp(1rem, 5vw, 1.75rem);
+        max-width: 100%;
+    }
+
+    .hero-cta {
+        margin-top: clamp(1.5rem, 6.5vw, 2.25rem);
+    }
+    .hero-cta img { height: clamp(46px, 12.5vw, 56px); }
+
+    .hero-phone {
+        position: absolute;
+        top: auto;
+        left: 50%;
+        bottom: 11.2%;
+        /* keep the GPU-layer promotion (see base rule) — this transform
+           overrides the base one, so translateZ(0) must be repeated here */
+        transform: translateX(-50%) translateZ(0);
+        margin: 0;
+        width: 62%;
+        min-width: 0;
+        max-width: none;
+        z-index: 2;
+    }
+
+    .features-body {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .feature-phones .phone { width: 28vw; }
+    .feature-phones .phone-2 { width: 34vw; }
+
+    .review { flex-basis: min(72vw, 280px); }
+
+    /* mobile CTA: the new beach-scene-mobile.svg is 390x1133, already
+       framed for the device width — no zoom, no shifting needed. Section
+       aspect matches the SVG so it fills naturally. */
+    .cta {
+        aspect-ratio: 390 / 1133;
+        padding: 4rem 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: 0;
+        border-radius: 28px 28px 0 0;
+    }
+    .cta-bg img {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        position: static;
+        object-fit: cover;
+        object-position: center;
+        transform: none;
+    }
+
+    .cta-inner {
+        position: static;
+        padding-top: 0;
+    }
+
+    /* footer cols sit ABOVE the crabs (tune `top` to slide up/down).
+       Wordmark + copyright are pinned to the bottom (below the crabs). */
+    .footer-cols {
+        position: absolute;
+        top: 62%;
+        left: 50%;
+        transform: translateX(-50%);
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem 1rem;
+        margin-top: 0;
+        text-align: left;
+        justify-items: start;
+        width: 92%;
+        max-width: 520px;
+    }
+    .footer-col {
+        text-align: left;
+    }
+    .footer-col h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+    }
+    .footer-col a {
+        font-size: 1rem;
+        padding: 0.3rem 0;
+    }
+
+    .cta-wordmark {
+        position: absolute;
+        bottom: 3.5%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        padding: 0 1.5rem;
+        width: 100%;
+    }
+    .copyright {
+        position: absolute;
+        bottom: 1.25%;
+        left: 0;
+        right: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    /* hero stays controlled by the 700px breakpoint above — no overrides here.
+       Sizes scale proportionally via clamp() at all widths. */
+
+    .stats { gap: 2rem; }
+
+    .feature-phones { gap: 0.5rem; }
+    .feature-phones .phone { width: 30vw; }
+    .feature-phones .phone-2 { width: 36vw; }
+
+    .cta-inner h2 { font-size: 2.2rem; }
+
+    .footer-cols {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: clamp(1.4rem, 8vw, 2.4rem);
+        line-height: 1.08;
+    }
+
+    .hero-sub {
+        margin-top: clamp(0.75rem, 3.5vw, 1rem);
+    }
+
+    .hero-cta {
+        margin-top: clamp(1rem, 4.5vw, 1.25rem);
+    }
+
+    .hero-phone { width: 59%; }
+}
+
+/* ---------- MOTION ----------
+   All entrance/float effects animate the standalone `translate` property,
+   never `transform` — the phones and CTAs use `transform` for positioning
+   (centering, rotation poses), and the two compose instead of clashing. */
+
+/* hero entrance: copy is staggered while the phone begins immediately */
+@keyframes rise-in {
+    from { opacity: 0; translate: 0 22px; }
+}
+@keyframes hero-phone-in {
+    from { opacity: 0; translate: 0 70px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-title { animation: rise-in .7s cubic-bezier(.22, 1, .36, 1) both; }
+    .hero-sub   { animation: rise-in .7s cubic-bezier(.22, 1, .36, 1) .12s both; }
+    .hero-cta   { animation: rise-in .7s cubic-bezier(.22, 1, .36, 1) .24s both; }
+    .hero-phone { animation: hero-phone-in .7s cubic-bezier(.22, 1, .36, 1) both; }
+
+    /* feature phones bob gently, out of phase so they feel independent */
+    .feature-phones .phone { animation: float 5.5s ease-in-out infinite; }
+    .feature-phones .phone-1 { animation-delay: .9s; }
+    .feature-phones .phone-3 { animation-delay: 1.8s; }
+}
+
+@keyframes float {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -10px; }
+}
+
+/* scroll reveal: elements with .reveal fade/slide in when they enter the
+   viewport (script.js adds .is-visible). Hidden state only applies under
+   html.js, so content stays visible if scripts don't run. transform and
+   box-shadow are included in the transition list because this rule outranks
+   the per-element ones (.feature-item, .review) and would otherwise kill
+   their hover transitions. */
+.js .reveal {
+    opacity: 0;
+    translate: 0 26px;
+    transition:
+        opacity .7s ease var(--reveal-delay, 0s),
+        translate .7s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0s),
+        transform .2s,
+        box-shadow .2s;
+}
+.js .reveal.is-visible {
+    opacity: 1;
+    translate: none;
+}
+
+/* stagger the feature cards; phones land just after the list */
+.feature-list .feature-item:nth-child(2) { --reveal-delay: .08s; }
+.feature-list .feature-item:nth-child(3) { --reveal-delay: .16s; }
+.feature-list .feature-item:nth-child(4) { --reveal-delay: .24s; }
+.feature-phones.reveal { --reveal-delay: .15s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        translate: none;
+        transition: transform .2s, box-shadow .2s;
+    }
+    .js .marquee-track { animation: none; }
+}

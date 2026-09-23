@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoni Smolyar - Author at Brainrot</title>
+    <meta name="description" content="Yoni Smolyar is the founder of Brainrot, passionate about helping people develop healthier relationships with technology.">
+    <meta name="keywords" content="Yoni Smolyar, Brainrot founder, digital wellness expert">
+    
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    
+    <!-- open graph / facebook -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://thebrainrotapp.com/author/yoni-smolyar.html">
+    <meta property="og:title" content="Yoni Smolyar - Author at Brainrot">
+    <meta property="og:description" content="Yoni Smolyar is the founder of Brainrot, passionate about helping people develop healthier relationships with technology.">
+    <meta property="og:image" content="https://thebrainrotapp.com/images/yoni-smolyar.webp">
+    <meta property="profile:first_name" content="Yoni">
+    <meta property="profile:last_name" content="Smolyar">
+    
+    <!-- twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://thebrainrotapp.com/author/yoni-smolyar.html">
+    <meta property="twitter:title" content="Yoni Smolyar - Author at Brainrot">
+    <meta property="twitter:description" content="Yoni Smolyar is the founder of Brainrot, passionate about helping people develop healthier relationships with technology.">
+    <meta property="twitter:image" content="https://thebrainrotapp.com/images/yoni-smolyar.webp">
+    
+    <!-- canonical url -->
+    <link rel="canonical" href="yoni-smolyar.html">
+    
+    <!-- structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yoni Smolyar",
+        "url": "https://thebrainrotapp.com/author/yoni-smolyar.html",
+        "image": "https://thebrainrotapp.com/images/yoni-smolyar.webp",
+        "jobTitle": "Founder",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Brainrot"
+        },
+        "description": "Founder of Brainrot, passionate about helping people develop healthier relationships with technology.",
+        "sameAs": []
+    }
+    </script>
+    
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav class="site-header">
+        <div class="header-container">
+            <a href="../index-1.htm" class="brand">
+                <img src="../images/brainrot-icon.svg" alt="Brainrot icon" class="brand-icon">
+                <img src="../images/brainrot-logo.svg" alt="Brainrot" class="brand-logo">
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="author-container">
+            <div class="author-header">
+                <img src="../images/yoni-smolyar.webp" alt="Yoni Smolyar" class="author-image">
+                <div class="author-info">
+                    <h1>Yoni Smolyar</h1>
+                    <p class="author-title">Founder, Brainrot</p>
+                    <p class="author-bio">Passionate about helping people develop healthier relationships with technology. Building Brainrot to combat digital addiction and promote mindful screen time.</p>
+                </div>
+            </div>
+            
+            <div class="author-posts">
+                <h2>Recent Posts</h2>
+                <div id="author-blog-posts" class="blog-posts">
+                    <!-- Author's posts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <nav class="footer-links">
+            <a href="../blog.html">Blog</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+            <a href="../contact.html">Contact</a>
+            <a href="../faq.html">FAQ</a>
+            <a href="../help.html">Help</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Brainrot. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Load author's posts
+        const authorPosts = [
+            {
+                title: "The Complete Guide to Digital Detox",
+                date: "2025-08-02",
+                excerpt: "Learn how to successfully complete a digital detox and reset your relationship with technology.",
+                url: "../blog/2025-08-02-digital-detox-guide.html",
+                readTime: "5 min"
+            }
+        ];
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+        
+        function renderAuthorPosts() {
+            const container = document.getElementById('author-blog-posts');
+            const sortedPosts = authorPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            const postsHTML = sortedPosts.map(post => `
+                <article class="blog-card">
+                    <h2><a href="${post.url}">${post.title}</a></h2>
+                    <div class="post-meta">
+                        <time datetime="${post.date}">${formatDate(post.date)}</time>
+                        <span class="reading-time">${post.readTime} read</span>
+                    </div>
+                    <p>${post.excerpt}</p>
+                    <a href="${post.url}" class="read-more">Read more →</a>
+                </article>
+            `).join('');
+            
+            container.innerHTML = postsHTML;
+        }
+        
+        document.addEventListener('DOMContentLoaded', renderAuthorPosts);
+    </script>
+    <script async="" src="../latest.js"></script>
+    <script async="" src="../auto-events.js"></script>
+</body>
+</html>

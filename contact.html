@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Brainrot App - Get in Touch</title>
+    <meta name="description" content="Have questions about Brainrot? Get in touch with our team. We're here to help with your screen time management needs.">
+    <meta name="keywords" content="contact, support, Brainrot app, screen time, customer service, app help">
+    
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- open graph / facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thebrainrotapp.com/contact.html">
+    <meta property="og:title" content="Contact Brainrot App Team">
+    <meta property="og:description" content="Have questions about the Brainrot app? We're here to help.">
+    <meta property="og:image" content="https://thebrainrotapp.com/images/og-image.png">
+    
+    <!-- twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thebrainrotapp.com/contact.html">
+    <meta property="twitter:title" content="Contact Brainrot App Team">
+    <meta property="twitter:description" content="Have questions about the Brainrot app? We're here to help.">
+    <meta property="twitter:image" content="https://thebrainrotapp.com/images/og-image.png">
+    
+    <!-- canonical url -->
+    <link rel="canonical" href="contact.html">
+    
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h2 class="logo">Contact Us</h2>
+        </header>
+
+        <main class="contact-content">
+            <p class="contact-intro">Have a question or feedback about Brainrot? We'd love to hear from you.</p>
+
+            <p style="text-align:center; margin-bottom:2.5rem; color:#555;">Looking to cancel your subscription? <a href="cancel.html" style="color:#ff4757; font-weight:500;">Tap here.</a></p>
+
+            <div class="contact-form-container">
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <!-- Replace with your Access Key -->
+                    <input type="hidden" name="access_key" value="c16eb8aa-ea02-4393-910e-7fc98101c88e">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required=""></textarea>
+                    </div>
+
+                    <!-- Honeypot Spam Protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <!-- Custom Confirmation / Success Page -->
+                    <input type="hidden" name="redirect" value="https://thebrainrotapp.com/thanks.html">
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </main>
+        
+        <footer>
+            <nav class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+                <a href="help.html">Help</a>
+            </nav>
+            <p class="copyright">&copy; 2026 Brainrot. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

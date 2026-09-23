@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Subscription | Brainrot</title>
+    <meta name="description" content="Manage your Brainrot subscription, update payment details, or cancel.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- canonical url -->
+    <link rel="canonical" href="manage.html">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="site-header">
+        <div class="header-container">
+            <a href="index-1.htm" class="brand">
+                <img src="images/brainrot-icon.svg" alt="Brainrot icon" class="brand-icon">
+                <img src="images/brainrot-logo.svg" alt="Brainrot" class="brand-logo">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main class="contact-content">
+            <h1 class="page-title" style="text-align:center;">Manage Your Subscription</h1>
+            <p class="contact-intro">Enter the email address you used to subscribe and we'll help you manage your subscription.</p>
+
+            <div class="contact-form-container">
+                <form id="manage-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required="" placeholder="you@example.com">
+                    </div>
+
+                    <p id="error-msg" style="color:#ff4757; text-align:center; display:none; font-weight:500;"></p>
+                    <p id="success-msg" style="color:#2e7d32; text-align:center; display:none; font-weight:500;"></p>
+
+                    <button type="submit" class="submit-button" id="submit-btn">Manage Subscription</button>
+                </form>
+            </div>
+
+            <div id="results" style="display:none; max-width:500px; margin:2rem auto 0;"></div>
+
+            <p style="text-align:center; margin-top:2rem; color:#888; font-size:0.9rem;">
+                Subscribed via the App Store? <a href="cancel.html" style="color:#ff4757; font-weight:500;">Cancel through Apple instead.</a>
+            </p>
+        </main>
+    </div>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+            <a href="help.html">Help</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Brainrot. All rights reserved.</p>
+    </footer>
+
+    <style>
+        .sub-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .sub-card-header {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+        .sub-card-detail {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .sub-card-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .btn-manage {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .btn-manage:hover { background: #000; transform: translateY(-2px); }
+        .btn-refund {
+            background: white;
+            color: #ff4757;
+            border: 1.5px solid #ff4757;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .btn-refund:hover { background: #ff4757; color: white; transform: translateY(-2px); }
+        .btn-refund:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .sub-status {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        .sub-status.active { background: #e8f5e9; color: #2e7d32; }
+        .sub-status.trialing { background: #e3f2fd; color: #1565c0; }
+        .sub-status.canceled { background: #fce4ec; color: #c62828; }
+        .results-heading {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+    <script>
+        const FUNCTION_URL = 'https://tuueizexidbuvvgvxpms.supabase.co/functions/v1/manage-subscription';
+        let currentEmail = '';
+
+        function trackEvent(event, metadata) {
+            fetch(FUNCTION_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: currentEmail, action: 'track', event, metadata }),
+            }).catch(() => {});
+        }
+
+        function renderResults(portals) {
+            const container = document.getElementById('results');
+            const heading = portals.length > 1
+                ? 'We found multiple accounts. Choose which one to manage:'
+                : 'We found your account:';
+            container.innerHTML = `<p class="results-heading">${heading}</p>`;
+
+            portals.forEach((portal, i) => {
+                const card = document.createElement('div');
+                card.className = 'sub-card';
+                const date = new Date(portal.created * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                let label;
+                if (portal.planName) {
+                    const price = portal.planPrice ? `$${(portal.planPrice / 100).toFixed(2)}/${portal.planInterval || 'month'}` : '';
+                    label = price ? `${portal.planName} — ${price}` : portal.planName;
+                } else {
+                    label = portals.length > 1 ? `Account ${i + 1}` : 'Your Subscription';
+                }
+
+                const statusLabel = portal.subStatus === 'active' ? 'Active'
+                    : portal.subStatus === 'trialing' ? 'Trial'
+                    : portal.subStatus === 'canceled' ? 'Canceled' : '';
+                const statusClass = portal.subStatus || '';
+                const statusBadge = statusLabel ? `<span class="sub-status ${statusClass}">${statusLabel}</span>` : '';
+
+                card.innerHTML = `
+                    <div class="sub-card-header">${label}${statusBadge}</div>
+                    <div class="sub-card-detail">Since ${date}</div>
+                    <div class="sub-card-actions">
+                        <button class="btn-manage" onclick="trackEvent('manage_click'); window.location.href='${portal.portalUrl}'">Manage Subscription</button>
+                        ${portal.canRefund ? '<button class="btn-refund" onclick="requestRefund(this)">Request Refund</button>' : ''}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            container.style.display = 'block';
+        }
+
+        async function requestRefund(btn) {
+            if (!confirm('This will cancel your subscription immediately and refund your most recent charge. Are you sure?')) {
+                return;
+            }
+
+            const errorMsg = document.getElementById('error-msg');
+            const successMsg = document.getElementById('success-msg');
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+
+            try {
+                const res = await fetch(FUNCTION_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: currentEmail, action: 'refund' }),
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorMsg.textContent = data.error || 'Something went wrong. Please try again.';
+                    errorMsg.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Request Refund';
+                    return;
+                }
+
+                successMsg.textContent = data.message;
+                successMsg.style.display = 'block';
+                btn.textContent = 'Refunded';
+
+                // Hide the results since subscription is canceled
+                document.getElementById('results').style.display = 'none';
+            } catch (err) {
+                errorMsg.textContent = 'Something went wrong. Please try again.';
+                errorMsg.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Request Refund';
+            }
+        }
+
+        document.getElementById('manage-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('submit-btn');
+            const errorMsg = document.getElementById('error-msg');
+            const successMsg = document.getElementById('success-msg');
+            const resultsContainer = document.getElementById('results');
+            currentEmail = document.getElementById('email').value.trim();
+
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+            resultsContainer.style.display = 'none';
+
+            try {
+                const res = await fetch(FUNCTION_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: currentEmail }),
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorMsg.textContent = data.error || 'Something went wrong. Please try again.';
+                    errorMsg.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Manage Subscription';
+                    return;
+                }
+
+                renderResults(data.portals);
+                btn.disabled = false;
+                btn.textContent = 'Manage Subscription';
+            } catch (err) {
+                errorMsg.textContent = 'Something went wrong. Please try again.';
+                errorMsg.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Manage Subscription';
+            }
+        });
+    </script>
+</body>
+</html>
