@@ -88,6 +88,23 @@ button { font: inherit; cursor: pointer; }
     justify-content: center;
 }
 
+.nav-x {
+    position: absolute;
+    right: var(--pad);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: var(--white);
+    transition: opacity .2s, transform .2s;
+}
+.nav-x:hover { opacity: .85; transform: translateY(-50%) scale(1.06); }
+
 .brand { transition: opacity .2s; }
 .brand:hover { opacity: .8; }
 .brand img { height: clamp(18px, 2vw, 28px); width: auto; display: block; }
